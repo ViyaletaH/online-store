@@ -1,6 +1,6 @@
 body {
     background-color: #FFF;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 html, body {
@@ -23,7 +23,7 @@ html, body {
 .header-cont {
     border: solid 1px crimson;
     width: 100%;
-    height: auto;
+    height: 3rem;
     display: flex;
     background-color: beige;
     margin-top: 2%;
@@ -33,9 +33,10 @@ html, body {
 .separator {
     border: solid 1px crimson;
     min-width: 100%;
-    min-height: 40%;
+    height: 5rem;
     display: flex;
     background-color: rgb(239, 239, 6);
+    margin-bottom: 3%;
 }
 
 .logo {
@@ -61,10 +62,13 @@ html, body {
     color: black;
     width: 100%;
     height: 100%;
+    align-content: flex-start;
+    margin-top: 0px;
 }
 
 li {
     margin: 10%;
+    
 }
 
 .cart-login {
@@ -82,14 +86,56 @@ li {
     max-width: 75%;
     margin-left: 12.5%;
     margin-right: 12.5%;
-    justify-content: space-between;
-    
+    justify-content: space-between;  
+    margin-bottom: 3%;  
 }
 
 .filters {
     border: solid 1px crimson;
     display: flex;
     min-width: 18%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.type {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.city {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.rooms {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.furniture {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.year {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.price {
+    border: solid 1px crimson;
+    display: flex;
+}
+
+.clear {
+    border: solid 1px crimson;
+    display: flex;
 }
 
 .variants {
@@ -117,4 +163,15 @@ li {
     display: flex;
     flex-basis: 10%;
     background-color: blueviolet;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.course {
+    margin-left: 12%;
+}
+
+.author {
+    margin-right: 12%;
+    align-self: center;
 }
