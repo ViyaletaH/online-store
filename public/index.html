@@ -6,43 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
+    <link rel="icon" href="images/icons/home (1).png"/> 
     <title>Real estate agency</title>
 </head>
 <body>
    <div class="wrapper">
     <header>
         <div class="header-cont">
-            <div class="logo">logo</div>
+            <div class="logo"><img src="./images/icons/home.png" height="40px" width="40px"><h1>DreamApartment</h1></div>
             <div class="menu">
                 <ul class="navigation">
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Apartments</li>
+                        <li><a href="#" class="home">Home</a></li>
+                        <li><a href="#" class="about">About</a></li>
+                        <li><a href="#" class="apart">Apartments</a></li>
                 </ul>
             </div>
-            <div class="cart-login">cart, login</div>
+            <div class="cart-login"><img src="./images/icons/deal.png" height="50px" width="50px"></div>
         </div>
-        <div class="separator"></div>
+        <div class="separator"><div class="inter-links"><h2><a href="#" class="home-sep">Home</a>/<a href="#" class="apart-sep">Apartments</a></h2></div></div>
     </header>
     <main></main>
         <div class="main-cont">
             <div class="filters">
-                <div class="search">search</div>
-                <div class="type">type</div>
-                <div class="city">city</div>
-                <div class="rooms">rooms</div>
-                <div class="furniture">furniture</div>
-                <div class="year">year</div>
-                <div class="price">price</div>
-                <div class="clear">clear</div>
+                <div class="search"><input type="text" placeholder="Search..." class="searcherItself" autofocus="" value=""></div>
+                <div class="type">
+                    <button type="button" class="rent">For a rent</button>
+                    <button type="button" class="buy">To buy</button>
+                </div>
+                <div class="city">
+                    <div class="bang">
+                        <div class="bang-choice"><input type="checkbox" name="bang"></div>
+                        <div class="bang-name"><label for="bang">Bangkok</label></div>
+                    </div>
+                    <div class="saigon">
+                        <div class="saigon-choice"><input type="checkbox" name="saigon"></div>
+                        <div class="saigon-name"><label for="saigon">Ho Chi Min</label></div>
+                    </div>
+                    <div class="singapore">
+                        <div class="sing-choice"><input type="checkbox" name="sing"></div>
+                        <div class="sing-name"><label for="sing">Singapore</label></div>
+                    </div>
+                    </div>
+                <div class="rooms">
+                    <form>
+                        <select>
+                            <option value="studio">Studio</option>
+                            <option value="two">2</option>
+                            <option value="three">3</option>
+                            <option value="four">4</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="furniture">
+                        <legend>Furniture:</legend>
+                        <div>
+                          <input type="radio" id="fur-y" name="furniture" value="fur-y"
+                                 checked>
+                          <label for="fur-y">Yes</label>
+                          <input type="radio" id="fur-n" name="furniture" value="fur-n">
+                          <label for="fur-n">No</label>
+                        </div>
+                </div>
+                <div class="year">
+                    <input type="range" name="year" min="2012" max="2021">
+                    <label for="year">Year</label>
+                </div>
+                <div class="price">
+                    <input type="range" name="price" min="500" max="250000">
+                    <label for="price">Price</label> 
+                </div>
+                <div class="clear">
+                    <button type="button">Clear filters</button>
+                </div>
             </div>
             <div class="variants">
                 <div class="subfilters">
-                    <div class="view">view</div>
-                    <div class="number">number</div>
-                    <div class="line">line</div>
-                    <div class="sort">Sort by</div>
-                    <div class="criteria">criteria</div>
+                    <div class="subparams">
+                        <div class="view">
+                            <img src="./images/icons/grid.png" alt="grid view" width="20px" height="20px" class="grid">
+                            <img src="./images/icons/list (1).png" alt="list view" width="20px" height="20px" class="list">
+                        </div>
+                        <div class="number">0 Variants Found</div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="subsorter">
+                        <div class="sort">Sort by</div>
+                        <div class="criteria">
+                            <form>
+                                <select>
+                                    <option value="lowest">Price(Lowest)</option>
+                                    <option value="highest">Price(Highest)</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="apartments">apartments</div>
             </div>
@@ -50,7 +107,7 @@
     <footer>
         <div class="footer-cont">
             <div class="course"><a href="https://rs.school/js/"><img src="https://rs.school/images/rs_school_js.svg" alt="course logo" height="50px" width="70px"></a></div>
-            <div class="author"><a href="https://github.com/ViyaletaH">github</a> 2022</div>
+            <div class="author"><a href="https://github.com/ViyaletaH" class="github">github</a> 2022</div>
         </div>
     </footer>
    </div>
