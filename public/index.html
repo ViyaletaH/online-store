@@ -48,35 +48,41 @@
                     </div>
                     </div>
                 <div class="rooms">
-                    <form>
-                        <select>
+                    <form class="roomsdropdown">
+                        <select class="roomsselect">
                             <option value="studio">Studio</option>
                             <option value="two">2</option>
                             <option value="three">3</option>
                             <option value="four">4</option>
                         </select>
+                        <div class="arrow"></div>
                     </form>
                 </div>
                 <div class="furniture">
                         <legend>Furniture:</legend>
-                        <div>
-                          <input type="radio" id="fur-y" name="furniture" value="fur-y"
-                                 checked>
-                          <label for="fur-y">Yes</label>
-                          <input type="radio" id="fur-n" name="furniture" value="fur-n">
-                          <label for="fur-n">No</label>
-                        </div>
+                           <div class="fur-yes"><input type="radio" id="fur-y" name="furniture" value="fur-y" class="y-choice"
+                                 >
+                          <label for="fur-y" class="fur-y">Yes</label></div>
+                          <div class="fur-no"><input type="radio" id="fur-n" name="furniture" value="fur-n" class="n-choice">
+                          <label for="fur-n" class="fur-n">No</label></div>
+                        
                 </div>
                 <div class="year">
-                    <input type="range" name="year" min="2012" max="2021">
-                    <label for="year">Year</label>
+                    <div class="y-range-num">
+                        <span class="y-num">0</span>
+                        <input type="range" name="year" min="2012" max="2021" class="year-range">
+                    </div>
+                    <label for="year" class="y-label">Year</label>
                 </div>
                 <div class="price">
-                    <input type="range" name="price" min="500" max="250000">
-                    <label for="price">Price</label> 
+                    <div class="p-range-num">
+                        <span class="p-num">0</span>
+                        <input type="range" name="price" min="500" max="250000" class="price-range">
+                    </div>
+                    <label for="price" class="p-label">Price</label> 
                 </div>
                 <div class="clear">
-                    <button type="button">Clear filters</button>
+                    <button type="button" class="clear-btn">Clear filters</button>
                 </div>
             </div>
             <div class="variants">
@@ -93,7 +99,7 @@
                         <div class="sort">Sort by</div>
                         <div class="criteria">
                             <form>
-                                <select>
+                                <select class="sortselect">
                                     <option value="lowest">Price(Lowest)</option>
                                     <option value="highest">Price(Highest)</option>
                                 </select>
