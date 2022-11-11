@@ -574,20 +574,19 @@ input[type="radio"]:checked {
   width: 45%;
 }
 
-/* .line:active{
+.active{
     background-image: linear-gradient(
       150deg,
-      #000000 0%,
+      #27ffe2 0%,
       rgb(77, 255, 92) 30%,
       #e313ff 50%,
       #fff800 100%
     );
     background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: logo 5s linear infinite;
-} */
+    animation: logo 1s linear infinite;
+    height: 2px;
+    width: 45%;
+}
 
 .subsorter {
   display: flex;
