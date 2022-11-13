@@ -196,6 +196,8 @@
   [type="button"],
   [type="reset"],
   [type="submit"] {
+
+    appearance: button;
     -webkit-appearance: button;
   }
   
@@ -288,6 +290,7 @@
    */
   
   [type="search"] {
+    appearance: textfield;
     -webkit-appearance: textfield; /* 1 */
     outline-offset: -2px; /* 2 */
   }
@@ -297,6 +300,7 @@
    */
   
   [type="search"]::-webkit-search-decoration {
+    appearance: none;
     -webkit-appearance: none;
   }
   
@@ -306,6 +310,7 @@
    */
   
   ::-webkit-file-upload-button {
+    appearance: button;
     -webkit-appearance: button; /* 1 */
     font: inherit; /* 2 */
   }

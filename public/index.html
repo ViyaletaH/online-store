@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="nouislider.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
     <link rel="icon" href="images/icons/home (1).png"/> 
+    <script src="https://kit.fontawesome.com/1cece31d30.js" crossorigin="anonymous"></script>
+    <script src="wNumb.min.js"></script>
     <title>Real estate agency</title>
 </head>
 <body>
@@ -28,7 +31,10 @@
     <main></main>
         <div class="main-cont">
             <div class="filters">
-                <div class="search"><input type="text" placeholder="Search..." class="searcherItself" autofocus="" value=""></div>
+                <div class="search">
+                    <input type="text" placeholder="Search..." class="searcherItself" autofocus="" value="" autocomplete="off">
+                    <div class="clear-search"><i class="fa-solid fa-xmark"></i></div>
+                </div>
                 <div class="type">
                     <button type="button" class="rent">For a rent</button>
                     <button type="button" class="buy">To buy</button>
@@ -69,15 +75,14 @@
                 </div>
                 <div class="year">
                     <div class="y-range-num">
-                        <span class="y-num">0</span>
-                        <input type="range" name="year" min="2012" max="2021" class="year-range">
+                        <output class="y-num" id="ynum">2012</output>
+                        <input type="range" name="year" min="2012" max="2021" class="year-range" value="1" id="year" oninput="ynum.value = year.value">
                     </div>
                     <label for="year" class="y-label">Year</label>
                 </div>
                 <div class="price">
                     <div class="p-range-num">
-                        <span class="p-num">0</span>
-                        <input type="range" name="price" min="500" max="250000" class="price-range">
+                        <div id="price"></div>
                     </div>
                     <label for="price" class="p-label">Price</label> 
                 </div>
@@ -117,6 +122,7 @@
         </div>
     </footer>
    </div>
+    <script src="nouislider.min.js"></script>
     <script type="module" src="bundle.js"></script>
 </body>
 </html>

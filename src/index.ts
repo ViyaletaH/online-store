@@ -1,28 +1,5 @@
-console.log('hi');
-
-//цифры на год
-const yearRange: HTMLElement = document.querySelector('.year-range')!;
-
-// yearRange.addEventListener('mousemove', () => {
-//     rangeSlide(this.value);
-// });
-
-//  yearRange.addEventListener('onChange', () => {
-//         rangeSlide(this.value);
-// });
-
-function rangeSlide(value: string) {
-   const yNum: HTMLElement = document.querySelector('.y-num')!;
-   yNum.innerHTML = value;
-}
-
-// onChange="rangeSlide(this.value)" 
-// onmousemove="rangeSlide(this.value)"
-
-//здесь будут цифры на цену
-{
-    const priceRange: HTMLElement = document.querySelector('.price-range')!;
-}
+import * as noUiSlider from '/Users/37529/online-store/node_modules/nouislider/dist/nouislider.js';
+// import * as wNumb from '/Users/37529/online-store/public/wNumb.min.js';
 
 //смена фона на городах (ГОТОВА)
     const wrapper: HTMLElement = document.querySelector('.wrapper')!;
@@ -53,7 +30,12 @@ document.onkeydown = function keySearch(event: KeyboardEvent): void {
   if (event.code === 'Enter') {
         checker = true;
         line.classList.add('active');
-  }
+
+        if (searcherItself.value.length !== 0) {
+            clear.classList.add('close');
+          }
+    }
+
 };
 
 document.onkeyup = function keySearch(): void {
@@ -62,3 +44,28 @@ document.onkeyup = function keySearch(): void {
   }
   checker = false;
 };
+
+//удаление запроса из строки поиска (ГОТОВО)
+
+const clear: HTMLElement = document.querySelector(".clear-search")!;
+const searcherItself: HTMLInputElement = document.querySelector('.searcherItself')!;
+
+clear.addEventListener("click", () => {
+    searcherItself.value = "";
+    clear.classList.remove("close");
+});
+
+const slider = document.getElementById('price')!;
+
+noUiSlider.create(slider, {
+    start: [500, 250000],
+    connect: true,
+    tooltips: true,
+    step: 50,
+    range: {
+        'min': [500],
+        'max': [250000]
+    },
+//    format: wNumb( { decimals: 0, suffix: '$' }),
+});
+
