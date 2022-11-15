@@ -55,6 +55,8 @@ clear.addEventListener("click", () => {
     clear.classList.remove("close");
 });
 
+//двойной слайдер (ГОТОВО) 
+
 const slider = document.getElementById('price')!;
 
 noUiSlider.create(slider, {
@@ -69,3 +71,221 @@ noUiSlider.create(slider, {
 //    format: wNumb( { decimals: 0, suffix: '$' }),
 });
 
+//карточки
+
+interface Card {
+    type: string,
+    city: string,
+    rooms: number,
+    year: number,
+    furniture: boolean,
+    price: number,
+    name: string,
+};
+
+const data = [{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+}, {
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+}, {
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+}, {
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+},
+{
+    type: 'rent',
+    city: 'bangkok',
+    rooms: 1,
+    year: 2018,
+    furniture: true,
+    price: 1000,
+    name: 'Studio in Bangkok',
+}
+];
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadCards(data);
+  });
+
+function loadCards(data: Array<Card>): void {
+    alert('DOM готов');
+    const apartments = document.querySelector('.apartments')!;
+    // document.querySelector(".image-container").innerHTML = "";
+    for (let i = 0 ; i < data.length; i++) {
+        const card = document.createElement("div")!;
+        card.classList.add("card");
+        apartments.appendChild(card);
+
+        const pickeys = document.createElement("div")!;
+        pickeys.classList.add("pic-keys");
+        card.appendChild(pickeys);
+
+        const photo = document.createElement("div")!;
+        photo.classList.add("photo");
+        pickeys.appendChild(photo);
+
+        const keys = document.createElement("div")!;
+        keys.classList.add("keys");
+        pickeys.appendChild(keys);
+
+        const name = document.createElement("div")!;
+        name.classList.add("card-name");
+        card.appendChild(name);
+
+        const info = document.createElement("div")!;
+        info.classList.add("info");
+        card.appendChild(info);
+
+        const typeYear = document.createElement("div")!;
+        typeYear.classList.add("type-year");
+        info.appendChild(typeYear);
+
+        const cardType = document.createElement("div")!;
+        cardType.classList.add("card-type");
+        typeYear.appendChild(cardType);
+
+        const cardYear = document.createElement("div")!;
+        cardYear.classList.add("card-year");
+        typeYear.appendChild(cardYear);
+
+        const pricelabel = document.createElement("div")!;
+        pricelabel.classList.add("pricelabel");
+        info.appendChild(pricelabel);
+        // card.innerHTML = `<img src="${results.urls.regular}">`;
+    }
+   
+};

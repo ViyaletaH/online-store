@@ -168,6 +168,7 @@ li {
   display: flex;
   flex-basis: 70%;
   background-color: #fff;
+  max-height: 60%;
   max-width: 75%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -563,7 +564,8 @@ input[type="radio"]:checked {
   display: flex;
   min-width: 78%;
   flex-direction: column;
-  justify-content: space-between;
+  margin-left: 3%;
+  justify-content: space-around;
 }
 
 .subfilters {
@@ -662,7 +664,76 @@ input[type="radio"]:checked {
 .apartments {
   border: solid 1px crimson;
   display: flex;
-  height: 90%;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80%;
+  min-height: 80%;
+  justify-content: space-around;
+  align-content: space-between;
+  padding-top: 2%;
+}
+
+.card {
+  border: solid 1px crimson;
+  display: flex;
+  position: relative;
+  width: 230px;
+  height: 200px;
+  margin-bottom: 2%;
+  flex-direction: column;
+}
+
+.pic-keys {
+  border: solid 1px crimson;
+  display: flex;
+  height: 80%;
+}
+
+.photo {
+  border: solid 1px crimson;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.keys {
+  border: solid 1px crimson;
+  display: flex;
+  position: absolute;
+}
+
+.card-name {
+  border: solid 1px crimson;
+  display: flex;
+}
+
+.info {
+  border: solid 1px crimson;
+  display: flex;
+  justify-content: space-between;
+}
+
+.type-year {
+  border: solid 1px crimson;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.card-type {
+  border: solid 1px crimson;
+  display: flex;
+}
+
+.card-year {
+  border: solid 1px crimson;
+  display: flex;
+}
+
+.pricelabel {
+  border: solid 1px crimson;
+  display: flex;
 }
 
 .footer-cont {
@@ -703,10 +774,6 @@ input[type="radio"]:checked {
   background: #e355ff;
 }
 
-/* .noUi-connects {
-
-} */
-
 .noUi-horizontal, .noUi-txt-dir-Itr {
   width: 130px;
   max-height: 8px;
@@ -715,10 +782,6 @@ input[type="radio"]:checked {
   border-radius: 15px;
   box-shadow: inset 0 0 5px #a2a2a2;
 }
-
-/* .noUi-origin {
-
-} */
 
 .noUi-touch-area {
   max-width: 10px;
@@ -768,3 +831,4 @@ input[type="radio"]:checked {
 .noUi-horizontal, .noUi-handle {
  margin-right: 10px;
 }
+
