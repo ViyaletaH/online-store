@@ -367,7 +367,7 @@ li {
   margin-right: 10%;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   border-radius: 50%;
@@ -381,7 +381,7 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
   background-color: #ffb9f4;
   animation: choice 2s linear infinite;
-}
+} */
 
 @keyframes choice {
   0% {
@@ -663,7 +663,6 @@ input[type="radio"]:checked {
 }
 
 .apartments {
-  border: solid 1px crimson;
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
@@ -676,7 +675,6 @@ input[type="radio"]:checked {
 }
 
 .card {
-  border: solid 1px crimson;
   display: flex;
   position: relative;
   width: 230px;
@@ -686,15 +684,17 @@ input[type="radio"]:checked {
   border-radius: 15px;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
 .pic-keys {
-  border: solid 1px crimson;
   display: flex;
   height: 80%;
   border-radius: 15px;
 }
 
 .photo {
-  border: solid 1px crimson;
   display: flex;
   width: 100%;
   height: 100%;
@@ -705,42 +705,61 @@ input[type="radio"]:checked {
 }
 
 .keys {
-  border: solid 1px crimson;
   display: flex;
   position: absolute;
+  border: solid 1px crimson;
+  right: 5px;
+  top: 3px;
+  width: 15px;
+  height: 15px;
+}
+
+.key-num {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px crimson;
+  right: 5px;
+  top: 3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 0.8rem;
 }
 
 .card-name {
-  border: solid 1px crimson;
   display: flex;
+  font-size: 0.9rem;
+  margin: 3px 0px 3px 0px;
 }
 
 .info {
-  border: solid 1px crimson;
   display: flex;
   justify-content: space-between;
 }
 
 .type-year {
-  border: solid 1px crimson;
   display: flex;
   width: 50%;
   justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.7rem;
+  color:#a2a2a2;
 }
 
 .card-type {
-  border: solid 1px crimson;
   display: flex;
 }
 
 .card-year {
-  border: solid 1px crimson;
   display: flex;
+  font-size: 0.65rem;
 }
 
 .pricelabel {
-  border: solid 1px crimson;
   display: flex;
+  font-size: 0.8rem;
 }
 
 .footer-cont {
@@ -882,5 +901,7 @@ input[type="radio"]:checked {
   scrollbar-width: thin;
 }
 
-
+.hide {
+  visibility: hidden;
+}
 

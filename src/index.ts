@@ -57,7 +57,7 @@ clear.addEventListener("click", () => {
 
 //двойной слайдер (ГОТОВО) 
 
-const slider = document.getElementById('price')!;
+const slider: HTMLElement = document.getElementById('price')!;
 
 noUiSlider.create(slider, {
     start: [500, 250000],
@@ -228,12 +228,11 @@ const data = [{
 
 document.addEventListener("DOMContentLoaded", () => {
     loadCards(data);
-  });
+});
+
+const apartments = document.querySelector('.apartments')!;
 
 function loadCards(data: Array<Card>): void {
-    alert('DOM готов');
-    const apartments = document.querySelector('.apartments')!;
-    // document.querySelector(".image-container").innerHTML = "";
     for (let i = 0 ; i < data.length; i++) {
         const card = document.createElement("div")!;
         card.classList.add("card");
@@ -260,7 +259,6 @@ function loadCards(data: Array<Card>): void {
         const info = document.createElement("div")!;
         info.classList.add("info");
         card.appendChild(info);
-
         const typeYear = document.createElement("div")!;
         typeYear.classList.add("type-year");
         info.appendChild(typeYear);
@@ -278,8 +276,48 @@ function loadCards(data: Array<Card>): void {
         const pricelabel = document.createElement("div")!;
         pricelabel.classList.add("pricelabel");
         info.appendChild(pricelabel);
-        pricelabel.innerHTML = data[i].price.toString();
-        // card.innerHTML = `<img src="${results.urls.regular}">`;
+        pricelabel.innerHTML = data[i].price.toString() + '$';
     }
    
 };
+
+//сортировка по городам
+const bangBut: HTMLElement = document.getElementById('bangCh')!;
+const saigonBut: HTMLElement = document.getElementById('saigonCh')!;
+const singBut: HTMLElement = document.getElementById('singCh')!;
+
+bangBut.addEventListener('click', () => {
+    apartments.innerHTML = "";
+    const bangFilter: Array<Card> = data.filter(filterBang);
+    loadCards(bangFilter);
+})  
+
+singBut.addEventListener('click', () => {
+    apartments.innerHTML = "";
+    const singFilter: Array<Card> = data.filter(filterSing);
+    loadCards(singFilter);
+})  
+
+saigonBut.addEventListener('click', () => {
+    apartments.innerHTML = "";
+    const saigonFilter: Array<Card> = data.filter(filterSaigon);
+    loadCards(saigonFilter);
+})  
+
+function filterBang(item: Card) {
+    if (item.city === 'bangkok') {
+      return true;
+    }
+}
+
+function filterSing(item: Card) {
+    if (item.city === 'sing') {
+      return true;
+    }
+}
+
+function filterSaigon(item: Card) {
+    if (item.city === 'saigon') {
+      return true;
+    }
+}
