@@ -1,3 +1,4 @@
+import { createReadStream } from 'fs';
 import * as noUiSlider from '/Users/37529/online-store/node_modules/nouislider/dist/nouislider.js';
 // import * as wNumb from '/Users/37529/online-store/public/wNumb.min.js';
 
@@ -225,11 +226,6 @@ const data = [{
 }
 ];
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadCards(data);
-});
-
 const apartments = document.querySelector('.apartments')!;
 
 function loadCards(data: Array<Card>): void {
@@ -281,43 +277,123 @@ function loadCards(data: Array<Card>): void {
    
 };
 
-//сортировка по городам
+//сортировки
+//запоминать сортировку по каждому варианту в константы (массивы), создать массив, в который будут залетать строки-флаги.
+//сортировать по новой на каждом шагу, используя ранее созданные константы
 const bangBut: HTMLElement = document.getElementById('bangCh')!;
 const saigonBut: HTMLElement = document.getElementById('saigonCh')!;
 const singBut: HTMLElement = document.getElementById('singCh')!;
 
-bangBut.addEventListener('click', () => {
-    apartments.innerHTML = "";
-    const bangFilter: Array<Card> = data.filter(filterBang);
-    loadCards(bangFilter);
-})  
+    const cards = document.querySelectorAll('.card')!;
+    document.addEventListener("DOMContentLoaded", () => {
+        loadCards(data);
+    });
 
-singBut.addEventListener('click', () => {
-    apartments.innerHTML = "";
-    const singFilter: Array<Card> = data.filter(filterSing);
-    loadCards(singFilter);
-})  
+    let arr: Array<Card> = [];
+//сортировка по городам
 
-saigonBut.addEventListener('click', () => {
-    apartments.innerHTML = "";
-    const saigonFilter: Array<Card> = data.filter(filterSaigon);
-    loadCards(saigonFilter);
-})  
+let cityF: Array<Card> = [];
+let flagC: string[] = [];
 
-function filterBang(item: Card) {
-    if (item.city === 'bangkok') {
+function cities() {
+
+    bangBut.addEventListener('click', () => {
+        cityF = [];
+        flagC = [];
+        apartments.innerHTML = "";
+        cityF = data.filter(filterBang);
+        loadCards(cityF);
+        flagC.push('bang');
+    })  
+    
+    singBut.addEventListener('click', () => {
+        cityF = [];
+        flagC = [];
+        apartments.innerHTML = "";
+        cityF = data.filter(filterSing);
+        loadCards(cityF);
+        flagC.push('sing');
+    })  
+    
+    saigonBut.addEventListener('click', () => {
+        cityF = [];
+        flagC = [];
+        apartments.innerHTML = "";
+        cityF = data.filter(filterSaigon);
+        loadCards(cityF);
+        flagC.push('saigon');
+    })  
+    
+    function filterBang(item: Card) {
+        if (item.city === 'bangkok') {
+          return true;
+        }
+    }
+    
+    function filterSing(item: Card) {
+        if (item.city === 'sing') {
+          return true;
+        }
+    }
+    
+    function filterSaigon(item: Card) {
+        if (item.city === 'saigon') {
+          return true;
+        }
+    }
+
+    arr = cityF;
+    console.log(arr);
+}
+
+cities();
+
+    //сортировка съем/покупка
+    
+    const rentButt = document.querySelector(".rent")!;
+    const buyButt = document.querySelector(".buy")!;
+
+    let typeF: Array<Card> = [];
+    let flagT: string[] = [];
+
+function types(): void {    
+
+    if (arr.length === 0) {
+        arr = data;
+    }
+
+    rentButt.addEventListener("click", () => {
+        typeF = [];
+        flagT = [];
+        apartments.innerHTML = "";
+        typeF = arr.filter(filterRent);
+        loadCards(typeF);
+        flagT.push('rent');
+    });
+
+    buyButt.addEventListener("click", () => {
+        typeF = [];
+        flagT = [];
+        apartments.innerHTML = "";
+        typeF = data.filter(filterBuy);
+        loadCards(typeF);
+        flagT.push('buy');
+    });
+
+    function filterRent(item: Card) {
+    if (item.type === 'rent') {
       return true;
+    }
+    }
+
+    function filterBuy(item: Card) {
+    if (item.type === 'buy') {
+      return true;
+    }
     }
 }
 
-function filterSing(item: Card) {
-    if (item.city === 'sing') {
-      return true;
-    }
-}
+types();
 
-function filterSaigon(item: Card) {
-    if (item.city === 'saigon') {
-      return true;
-    }
-}
+
+
