@@ -79,7 +79,7 @@ interface Card {
     city: string,
     rooms: number,
     year: number,
-    furniture: boolean,
+    furniture: string,
     price: number,
     name: string,
     picture: string,
@@ -90,7 +90,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 1,
     year: 2018,
-    furniture: false,
+    furniture: 'false',
     price: 500,
     name: 'Studio in Bangkok',
     picture: 'url(images/bangkok/4.png)'
@@ -99,7 +99,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 2,
     year: 2014,
-    furniture: true,
+    furniture: 'true',
     price: 800,
     name: '2-room apartment in Bangkok',
     picture: 'url(images/bangkok/1.png)',
@@ -108,7 +108,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 3,
     year: 2012,
-    furniture: true,
+    furniture: 'true',
     price: 250000,
     name: '3-room apartment in Bangkok',
     picture: 'url(images/bangkok/2.png)',
@@ -118,7 +118,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 2,
     year: 2018,
-    furniture: true,
+    furniture: 'true',
     price: 180000,
     name: '2-rooms apartment in Bangkok',
     picture: 'url(images/bangkok/5.jpg)',
@@ -128,7 +128,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 2,
     year: 2015,
-    furniture: true,
+    furniture: 'true',
     price: 1000,
     name: '2-rooms apartment in Bangkok',
     picture: 'url(images/bangkok/6.jpg)',
@@ -138,7 +138,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 2,
     year: 2019,
-    furniture: true,
+    furniture: 'true',
     price: 1700,
     name: '2-rooms apartment in Bangkok',
     picture: 'url(images/bangkok/8.jpg)',
@@ -149,7 +149,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 3,
     year: 2020,
-    furniture: true,
+    furniture: 'true',
     price: 2500,
     name: '3-room apartment in Bangkok',
     picture: 'url(images/bangkok/7.jpg)',
@@ -159,7 +159,7 @@ const data: Array<Card> = [{
     city: 'bangkok',
     rooms: 1,
     year: 2021,
-    furniture: true,
+    furniture: 'true',
     price: 1300,
     name: 'Studio in Bangkok',
     picture: 'url(images/bangkok/9.jpg)',
@@ -169,7 +169,7 @@ const data: Array<Card> = [{
     city: 'saigon',
     rooms: 1,
     year: 2019,
-    furniture: false,
+    furniture: 'false',
     price: 210000,
     name: 'Studio in Saigon',
     picture: 'url(images/hochimin/1.jpg)',
@@ -179,7 +179,7 @@ const data: Array<Card> = [{
     city: 'saigon',
     rooms: 2,
     year: 2012,
-    furniture: true,
+    furniture: 'true',
     price: 250000,
     name: '2-room apartment in Saigon',
     picture: 'url(images/hochimin/2.jpg)',
@@ -189,7 +189,7 @@ const data: Array<Card> = [{
     city: 'saigon',
     rooms: 2,
     year: 2020,
-    furniture: true,
+    furniture: 'true',
     price: 1000,
     name: '2-room apartment in Saigon',
     picture: 'url(images/hochimin/3.jpg)',
@@ -199,7 +199,7 @@ const data: Array<Card> = [{
     city: 'sing',
     rooms: 1,
     year: 2014,
-    furniture: true,
+    furniture: 'true',
     price: 3000,
     name: 'Studio in Singapore',
     picture: 'url(images/singapore/1.jpeg)',
@@ -209,7 +209,7 @@ const data: Array<Card> = [{
     city: 'sing',
     rooms: 1,
     year: 2018,
-    furniture: true,
+    furniture: 'true',
     price: 4500,
     name: 'Studio in Singapore',
     picture: 'url(images/singapore/2.png)',
@@ -219,7 +219,7 @@ const data: Array<Card> = [{
     city: 'sing',
     rooms: 1,
     year: 2017,
-    furniture: true,
+    furniture: 'true',
     price: 5300,
     name: 'Studio in Singapore',
     picture: 'url(images/singapore/3.png)',
@@ -285,8 +285,10 @@ const saigonBut: HTMLElement = document.getElementById('saigonCh')!;
 const singBut: HTMLElement = document.getElementById('singCh')!;
 const rentButt = document.querySelector(".rent")!;
 const buyButt = document.querySelector(".buy")!;
+const furYes = document.getElementById("fur-y")!;
+const furNo = document.getElementById("fur-n")!;
 
-    const cards = document.querySelectorAll('.card')!;
+const cards = document.querySelectorAll('.card')!;
 
 async function basicLoad () {
     document.addEventListener("DOMContentLoaded", () => {
@@ -329,7 +331,7 @@ go();
         generalFilter();
         loadCards(data1);
     })  
-
+    //сортировка по типу
     rentButt.addEventListener("click", () => {
         data1 = data;
         apartments.innerHTML = "";
@@ -345,31 +347,26 @@ go();
         generalFilter();
         loadCards(data1);
     });
+    //сортировка по наличию мебели
+    furYes.addEventListener('click', () => {
+        data1 = data;
+        apartments.innerHTML = "";
+        checkCard.furniture = 'true';
+        generalFilter();
+        loadCards(data1);
+    });  
 
-//сортировка съем/покупка
+    furNo.addEventListener('click', () => {
+        data1 = data;
+        apartments.innerHTML = "";
+        checkCard.furniture = 'false';
+        generalFilter();
+        loadCards(data1);
+    });  
 
-// function types(): void {    
-//     apartments.innerHTML = "";
+const year = document.querySelector(".y-num")!;
 
-//     rentButt.addEventListener("click", () => {
-//         apartments.innerHTML = "";
-//         checkCard.type = 'rent';
-//         generalFilter();
-//         loadCards(data1);
-//     });
-
-//     buyButt.addEventListener("click", () => {
-//         apartments.innerHTML = "";
-//         checkCard.type = 'buy';
-//         generalFilter();
-//         loadCards(data1);
-//     });
-
-    
-
-// }
-
-// types();
+console.log(year.innerHTML);
 
 let data1 = data;
 let checkCard: Card = {
@@ -377,7 +374,7 @@ let checkCard: Card = {
     city: 'string',
     rooms: 0,
     year: 0,
-    furniture: true,
+    furniture: 'string',
     price: 0,
     name: 'string',
     picture: 'string',
@@ -392,6 +389,9 @@ function generalFilter(): void {
         checkCard.city === "sing" ? (data1 = data1.filter(filterSing)) : (checkCard.city = checkCard.city);
         checkCard.city === "saigon" ? (data1 = data1.filter(filterSaigon)) : (checkCard.city = checkCard.city);
     }
+    if (checkCard.furniture !== "string") {
+        checkCard.furniture === 'true' ? (data1 = data1.filter(filterFury)) : (data1 = data1.filter(filterFurn));
+    }
 
     function filterRent(item: Card) {
         if (item.type === 'rent') {
@@ -402,6 +402,16 @@ function generalFilter(): void {
         if (item.type === 'buy') {
           return true;
         }}
+
+        function filterFurn(item: Card) {
+            if (item.furniture === 'false') {
+              return true;
+            }}
+
+            function filterFury(item: Card) {
+                if (item.furniture === 'true') {
+                  return true;
+                }}
 
         function filterBang(item: Card) {
             if (item.city === 'bangkok') {
