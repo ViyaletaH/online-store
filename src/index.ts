@@ -85,7 +85,7 @@ interface Card {
     picture: string,
 };
 
-const data = [{
+const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 1,
@@ -283,117 +283,160 @@ function loadCards(data: Array<Card>): void {
 const bangBut: HTMLElement = document.getElementById('bangCh')!;
 const saigonBut: HTMLElement = document.getElementById('saigonCh')!;
 const singBut: HTMLElement = document.getElementById('singCh')!;
+const rentButt = document.querySelector(".rent")!;
+const buyButt = document.querySelector(".buy")!;
 
     const cards = document.querySelectorAll('.card')!;
+
+async function basicLoad () {
     document.addEventListener("DOMContentLoaded", () => {
         loadCards(data);
     });
+}
 
-    let arr: Array<Card> = [];
+async function go() {
+    const load = await basicLoad();
+    console.log(load)
+    const keys = await keysListen();
+    console.log(keys);
+}
+
+go();
+
 //сортировка по городам
 
-let cityF: Array<Card> = [];
-let flagC: string[] = [];
-
-function cities() {
 
     bangBut.addEventListener('click', () => {
-        cityF = [];
-        flagC = [];
+        data1 = data;
         apartments.innerHTML = "";
-        cityF = data.filter(filterBang);
-        loadCards(cityF);
-        flagC.push('bang');
+        checkCard.city = 'bang';
+        generalFilter();
+        loadCards(data1);
     })  
     
     singBut.addEventListener('click', () => {
-        cityF = [];
-        flagC = [];
+        data1 = data;
         apartments.innerHTML = "";
-        cityF = data.filter(filterSing);
-        loadCards(cityF);
-        flagC.push('sing');
+        checkCard.city = 'sing';
+        generalFilter();
+        loadCards(data1);
     })  
     
     saigonBut.addEventListener('click', () => {
-        cityF = [];
-        flagC = [];
+        data1 = data;
         apartments.innerHTML = "";
-        cityF = data.filter(filterSaigon);
-        loadCards(cityF);
-        flagC.push('saigon');
+        checkCard.city = 'saigon';
+        generalFilter();
+        loadCards(data1);
     })  
-    
-    function filterBang(item: Card) {
-        if (item.city === 'bangkok') {
-          return true;
-        }
-    }
-    
-    function filterSing(item: Card) {
-        if (item.city === 'sing') {
-          return true;
-        }
-    }
-    
-    function filterSaigon(item: Card) {
-        if (item.city === 'saigon') {
-          return true;
-        }
-    }
-
-    arr = cityF;
-    console.log(arr);
-}
-
-cities();
-
-    //сортировка съем/покупка
-    
-    const rentButt = document.querySelector(".rent")!;
-    const buyButt = document.querySelector(".buy")!;
-
-    let typeF: Array<Card> = [];
-    let flagT: string[] = [];
-
-function types(): void {    
-
-    if (arr.length === 0) {
-        arr = data;
-    }
 
     rentButt.addEventListener("click", () => {
-        typeF = [];
-        flagT = [];
+        data1 = data;
         apartments.innerHTML = "";
-        typeF = arr.filter(filterRent);
-        loadCards(typeF);
-        flagT.push('rent');
+        checkCard.type = 'rent';
+        generalFilter();
+        loadCards(data1);
     });
 
     buyButt.addEventListener("click", () => {
-        typeF = [];
-        flagT = [];
+        data1 = data;
         apartments.innerHTML = "";
-        typeF = data.filter(filterBuy);
-        loadCards(typeF);
-        flagT.push('buy');
+        checkCard.type = 'buy';
+        generalFilter();
+        loadCards(data1);
     });
 
+//сортировка съем/покупка
+
+// function types(): void {    
+//     apartments.innerHTML = "";
+
+//     rentButt.addEventListener("click", () => {
+//         apartments.innerHTML = "";
+//         checkCard.type = 'rent';
+//         generalFilter();
+//         loadCards(data1);
+//     });
+
+//     buyButt.addEventListener("click", () => {
+//         apartments.innerHTML = "";
+//         checkCard.type = 'buy';
+//         generalFilter();
+//         loadCards(data1);
+//     });
+
+    
+
+// }
+
+// types();
+
+let data1 = data;
+let checkCard: Card = {
+    type: 'string',
+    city: 'string',
+    rooms: 0,
+    year: 0,
+    furniture: true,
+    price: 0,
+    name: 'string',
+    picture: 'string',
+};
+//при нажатии каждого фильтра сначала обнулять дату1 (до даты), потом проверять каждую строку в контрольной карте. если не равна дефолту, проводить фильтр.
+function generalFilter(): void {
+    if (checkCard.type !== 'string') {
+        checkCard.type === 'rent' ? (data1 = data1.filter(filterRent)) : data1 = data1.filter(filterBuy);
+    }
+    if (checkCard.city !== "string") {
+        checkCard.city === 'bang' ? (data1 = data1.filter(filterBang)) : (checkCard.city = checkCard.city);
+        checkCard.city === "sing" ? (data1 = data1.filter(filterSing)) : (checkCard.city = checkCard.city);
+        checkCard.city === "saigon" ? (data1 = data1.filter(filterSaigon)) : (checkCard.city = checkCard.city);
+    }
+
     function filterRent(item: Card) {
-    if (item.type === 'rent') {
-      return true;
-    }
-    }
+        if (item.type === 'rent') {
+          return true;
+        }
+        }
+        function filterBuy(item: Card) {
+        if (item.type === 'buy') {
+          return true;
+        }}
 
-    function filterBuy(item: Card) {
-    if (item.type === 'buy') {
-      return true;
-    }
-    }
+        function filterBang(item: Card) {
+            if (item.city === 'bangkok') {
+              return true;
+            }
+        }
+        
+        function filterSing(item: Card) {
+            if (item.city === 'sing') {
+              return true;
+            }
+        }
+        
+        function filterSaigon(item: Card) {
+            if (item.city === 'saigon') {
+              return true;
+            }
+        }
 }
+generalFilter();
 
-types();
+//ключи и корзина 
+
+const keys = document.querySelectorAll(".keys")!;
+const keyNum = document.querySelector(".key-num")!;
+
+let keyCounter = 0;
 
 
-
+async function keysListen() {
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].addEventListener('click',() => {
+            keyNum.innerHTML = "";
+            keyCounter++;
+            keyNum.innerHTML = keyCounter.toString();
+        });
+    }
+} 
