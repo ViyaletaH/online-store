@@ -78,6 +78,7 @@ interface Card {
     type: string,
     city: string,
     rooms: number,
+    all: boolean,
     year: number,
     furniture: string,
     price: number,
@@ -89,6 +90,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 1,
+    all: true,
     year: 2018,
     furniture: 'false',
     price: 500,
@@ -98,6 +100,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 2,
+    all: true,
     year: 2014,
     furniture: 'true',
     price: 800,
@@ -107,6 +110,7 @@ const data: Array<Card> = [{
     type: 'buy',
     city: 'bangkok',
     rooms: 3,
+    all: true,
     year: 2012,
     furniture: 'true',
     price: 250000,
@@ -117,6 +121,7 @@ const data: Array<Card> = [{
     type: 'buy',
     city: 'bangkok',
     rooms: 2,
+    all: true,
     year: 2018,
     furniture: 'true',
     price: 180000,
@@ -127,6 +132,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 2,
+    all: true,
     year: 2015,
     furniture: 'true',
     price: 1000,
@@ -137,6 +143,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 2,
+    all: true,
     year: 2019,
     furniture: 'true',
     price: 1700,
@@ -148,6 +155,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 3,
+    all: true,
     year: 2020,
     furniture: 'true',
     price: 2500,
@@ -158,6 +166,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'bangkok',
     rooms: 1,
+    all: true,
     year: 2021,
     furniture: 'true',
     price: 1300,
@@ -168,6 +177,7 @@ const data: Array<Card> = [{
     type: 'buy',
     city: 'saigon',
     rooms: 1,
+    all: true,
     year: 2019,
     furniture: 'false',
     price: 210000,
@@ -178,6 +188,7 @@ const data: Array<Card> = [{
     type: 'buy',
     city: 'saigon',
     rooms: 2,
+    all: true,
     year: 2012,
     furniture: 'true',
     price: 250000,
@@ -188,6 +199,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'saigon',
     rooms: 2,
+    all: true,
     year: 2020,
     furniture: 'true',
     price: 1000,
@@ -198,6 +210,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'sing',
     rooms: 1,
+    all: true,
     year: 2014,
     furniture: 'true',
     price: 3000,
@@ -208,6 +221,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'sing',
     rooms: 1,
+    all: true,
     year: 2018,
     furniture: 'true',
     price: 4500,
@@ -218,6 +232,7 @@ const data: Array<Card> = [{
     type: 'rent',
     city: 'sing',
     rooms: 1,
+    all: true,
     year: 2017,
     furniture: 'true',
     price: 5300,
@@ -287,12 +302,20 @@ const rentButt = document.querySelector(".rent")!;
 const buyButt = document.querySelector(".buy")!;
 const furYes = document.getElementById("fur-y")!;
 const furNo = document.getElementById("fur-n")!;
+const totalNumber = document.querySelector(".number")!;
+const dropd = document.querySelector(".roomsselect")!;
+const studio = document.getElementById("studio")!;
+const twoR = document.getElementById("two")!;
+const threeR = document.getElementById("three")!;
+const fourR = dropd.querySelector(".four")!;
+
 
 const cards = document.querySelectorAll('.card')!;
 
 async function basicLoad () {
     document.addEventListener("DOMContentLoaded", () => {
         loadCards(data);
+        totalNumber.innerHTML = data.length + ' Variants found';
     });
 }
 
@@ -373,14 +396,32 @@ let checkCard: Card = {
     type: 'string',
     city: 'string',
     rooms: 0,
+    all: false,
     year: 0,
     furniture: 'string',
     price: 0,
     name: 'string',
     picture: 'string',
 };
-//при нажатии каждого фильтра сначала обнулять дату1 (до даты), потом проверять каждую строку в контрольной карте. если не равна дефолту, проводить фильтр.
+//фильтр по комнатам
+const mySelect = (document.querySelector('.roomsselect') as HTMLElement);
+function dropdown():void {
+ 
+   mySelect.onchange = (event) => {
+    let inputText =  (event.target as HTMLInputElement).value;
+
+        data1 = data;
+        apartments.innerHTML = "";
+        checkCard.rooms = ~~inputText;
+        generalFilter();
+        loadCards(data1);
+
+}}
+dropdown();
+
 function generalFilter(): void {
+    dropdown();
+
     if (checkCard.type !== 'string') {
         checkCard.type === 'rent' ? (data1 = data1.filter(filterRent)) : data1 = data1.filter(filterBuy);
     }
@@ -392,6 +433,38 @@ function generalFilter(): void {
     if (checkCard.furniture !== "string") {
         checkCard.furniture === 'true' ? (data1 = data1.filter(filterFury)) : (data1 = data1.filter(filterFurn));
     }
+    if (checkCard.rooms) {
+        checkCard.rooms === 0 ? (data1 = data1.filter(filterAllRooms)) : (checkCard.rooms = checkCard.rooms);
+        checkCard.rooms === 1 ? (data1 = data1.filter(filterStudio)) : (checkCard.rooms = checkCard.rooms);
+        checkCard.rooms === 2 ? (data1 = data1.filter(filterTwo)) : (checkCard.rooms = checkCard.rooms);
+        checkCard.rooms === 3 ? (data1 = data1.filter(filterThree)) : (checkCard.rooms = checkCard.rooms);
+        checkCard.rooms === 4 ? (data1 = data1.filter(filterFour)) : (checkCard.rooms = checkCard.rooms);
+    }
+
+    function filterStudio(item: Card) {
+        if (item.rooms === 1) {
+          return true;
+        }
+        }
+        function filterTwo(item: Card) {
+        if (item.rooms === 2) {
+          return true;
+        }}
+
+        function filterThree(item: Card) {
+            if (item.rooms === 3) {
+              return true;
+            }
+            }
+        function filterFour(item: Card) {
+            if (item.rooms === 4) {
+              return true;
+            }}
+        function filterAllRooms(item: Card) {
+            if (item.all === true) {
+                return true;
+            }
+        }
 
     function filterRent(item: Card) {
         if (item.type === 'rent') {
@@ -430,6 +503,9 @@ function generalFilter(): void {
               return true;
             }
         }
+
+        data1.length === 1 ? (totalNumber.innerHTML = data1.length + ' Variant found') : (totalNumber.innerHTML = data1.length + ' Variants found');
+        
 }
 generalFilter();
 
