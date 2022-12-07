@@ -404,10 +404,10 @@ let checkCard: Card = {
     picture: 'string',
 };
 //фильтр по комнатам
-const mySelect = (document.querySelector('.roomsselect') as HTMLElement);
+const roomsselect = (document.querySelector('.roomsselect') as HTMLElement);
 function dropdown():void {
  
-   mySelect.onchange = (event) => {
+    roomsselect.onchange = (event) => {
     let inputText =  (event.target as HTMLInputElement).value;
 
         data1 = data;
@@ -418,20 +418,42 @@ function dropdown():void {
 
 }}
 dropdown();
+//сортировка в порядках по цене
+const sortselect = (document.querySelector('.sortselect') as HTMLElement);
+function priceOrder():void {
+ 
+    sortselect.onchange = (event) => {
+    let inputText =  (event.target as HTMLInputElement).value;
+        apartments.innerHTML = "";
+        if(inputText === "lowest") {
+            checkCard.picture = 'low';
+            generalFilter();
+            loadCards(data1);
+        };
+        if(inputText === "highest") {
+            checkCard.picture = 'high';
+            generalFilter();    
+            loadCards(data1);
+        };
+
+}}
+priceOrder();
 
 function generalFilter(): void {
-    dropdown();
-
     if (checkCard.type !== 'string') {
         checkCard.type === 'rent' ? (data1 = data1.filter(filterRent)) : data1 = data1.filter(filterBuy);
+        priceOrder();
     }
     if (checkCard.city !== "string") {
+        priceOrder();
         checkCard.city === 'bang' ? (data1 = data1.filter(filterBang)) : (checkCard.city = checkCard.city);
         checkCard.city === "sing" ? (data1 = data1.filter(filterSing)) : (checkCard.city = checkCard.city);
         checkCard.city === "saigon" ? (data1 = data1.filter(filterSaigon)) : (checkCard.city = checkCard.city);
+        priceOrder();
     }
     if (checkCard.furniture !== "string") {
         checkCard.furniture === 'true' ? (data1 = data1.filter(filterFury)) : (data1 = data1.filter(filterFurn));
+        priceOrder();
     }
     if (checkCard.rooms) {
         checkCard.rooms === 0 ? (data1 = data1.filter(filterAllRooms)) : (checkCard.rooms = checkCard.rooms);
@@ -439,6 +461,10 @@ function generalFilter(): void {
         checkCard.rooms === 2 ? (data1 = data1.filter(filterTwo)) : (checkCard.rooms = checkCard.rooms);
         checkCard.rooms === 3 ? (data1 = data1.filter(filterThree)) : (checkCard.rooms = checkCard.rooms);
         checkCard.rooms === 4 ? (data1 = data1.filter(filterFour)) : (checkCard.rooms = checkCard.rooms);
+        priceOrder();
+    }
+    if (checkCard.picture !== 'string') {
+        checkCard.picture === 'low' ? (data1 = data1.sort((a, b) => a.price - b.price)) : (data1 = data1.sort((a, b) => b.price - a.price));
     }
 
     function filterStudio(item: Card) {
@@ -503,9 +529,8 @@ function generalFilter(): void {
               return true;
             }
         }
-
         data1.length === 1 ? (totalNumber.innerHTML = data1.length + ' Variant found') : (totalNumber.innerHTML = data1.length + ' Variants found');
-        
+
 }
 generalFilter();
 
