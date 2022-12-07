@@ -387,10 +387,6 @@ go();
         loadCards(data1);
     });  
 
-const year = document.querySelector(".y-num")!;
-
-console.log(year.innerHTML);
-
 let data1 = data;
 let checkCard: Card = {
     type: 'string',
@@ -439,6 +435,22 @@ function priceOrder():void {
 }}
 priceOrder();
 
+const yearLabel = document.getElementById('ynum')!;
+
+const yearselect = (document.querySelector('.year-range') as HTMLElement);
+function yearSort():void {
+ 
+    yearselect.oninput = (event) => {
+    let inputText =  (event.target as HTMLInputElement).value;
+        data1 = data;
+        apartments.innerHTML = "";
+            checkCard.year = ~~inputText;
+            yearLabel.innerHTML = inputText;
+            generalFilter();    
+            loadCards(data1);
+}}
+yearSort();
+
 function generalFilter(): void {
     if (checkCard.type !== 'string') {
         checkCard.type === 'rent' ? (data1 = data1.filter(filterRent)) : data1 = data1.filter(filterBuy);
@@ -465,6 +477,15 @@ function generalFilter(): void {
     }
     if (checkCard.picture !== 'string') {
         checkCard.picture === 'low' ? (data1 = data1.sort((a, b) => a.price - b.price)) : (data1 = data1.sort((a, b) => b.price - a.price));
+    }
+    if (checkCard.year !== 0) {
+        data1 = data1.filter(filterYear);//отловить 
+    }
+
+    function filterYear(item: Card) {
+        if (item.year === checkCard.year) {
+          return true;
+        }
     }
 
     function filterStudio(item: Card) {
@@ -530,7 +551,7 @@ function generalFilter(): void {
             }
         }
         data1.length === 1 ? (totalNumber.innerHTML = data1.length + ' Variant found') : (totalNumber.innerHTML = data1.length + ' Variants found');
-
+        console.log(checkCard.year);
 }
 generalFilter();
 
