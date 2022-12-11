@@ -74,6 +74,8 @@ noUiSlider.create(slider, {
 
 //карточки
 
+let cart: Array<string> = [];
+
 interface Card {
     type: string,
     city: string,
@@ -242,6 +244,9 @@ const data: Array<Card> = [{
 ];
 
 const apartments = document.querySelector('.apartments')!;
+const keyNum = document.querySelector(".key-num")!;
+//айди с прочей инфой загоняем в объект, используемый для хранения в массиве корзины
+//если да, то по айди удаляем из массива, снимаем стили. предельная емкость корзины -- 10 элементов.
 
 function loadCards(data: Array<Card>): void {
     for (let i = 0 ; i < data.length; i++) {
@@ -260,7 +265,21 @@ function loadCards(data: Array<Card>): void {
 
         const keys = document.createElement("div")!;
         keys.classList.add("keys");
+        keys.setAttribute("id", `${i}`);
         pickeys.appendChild(keys);
+        keys.addEventListener('click',() => {
+            keyNum.innerHTML = "";
+            if(keys.classList.contains("chosen")) {
+                keys.classList.remove("chosen");
+                card.classList.remove("card-choice");
+                cart = cart.filter((elem) => (elem !== `${data[i].picture}`));
+            } else {
+                keys.classList.add("chosen");
+                card.classList.add("card-choice");
+                cart.push(data[i].picture);
+            }
+            keyNum.innerHTML = cart.length.toString();
+        });
 
         const name = document.createElement("div")!;
         name.classList.add("card-name");
@@ -312,21 +331,14 @@ const fourR = dropd.querySelector(".four")!;
 
 const cards = document.querySelectorAll('.card')!;
 
-async function basicLoad () {
+function basicLoad () {
     document.addEventListener("DOMContentLoaded", () => {
         loadCards(data);
         totalNumber.innerHTML = data.length + ' Variants found';
     });
-}
+};
 
-async function go() {
-    const load = await basicLoad();
-    console.log(load)
-    const keys = await keysListen();
-    console.log(keys);
-}
-
-go();
+basicLoad();
 
 //сортировка по городам
 
@@ -451,6 +463,19 @@ function yearSort():void {
 }}
 yearSort();
 
+// interface Instance extends HTMLElement {
+//     noUiSlider: noUiSlider
+// }
+// slider: noUiSlider.Instance = document.getElementById('slider') as noUiSlider.Instance;
+
+// slider.noUiSlider.get();
+
+// slider = document.getElementById('slider') as noUiSlider.target;
+
+// slider.noUiSlider.on('update', function(values, handle) {
+//     // value for updated handle is in values[handle]
+// });
+
 function generalFilter(): void {
     if (checkCard.type !== 'string') {
         checkCard.type === 'rent' ? (data1 = data1.filter(filterRent)) : data1 = data1.filter(filterBuy);
@@ -554,21 +579,3 @@ function generalFilter(): void {
         console.log(checkCard.year);
 }
 generalFilter();
-
-//ключи и корзина 
-
-const keys = document.querySelectorAll(".keys")!;
-const keyNum = document.querySelector(".key-num")!;
-
-let keyCounter = 0;
-
-
-async function keysListen() {
-    for (let i = 0; i < keys.length; i++) {
-        keys[i].addEventListener('click',() => {
-            keyNum.innerHTML = "";
-            keyCounter++;
-            keyNum.innerHTML = keyCounter.toString();
-        });
-    }
-} 
