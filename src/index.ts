@@ -245,7 +245,6 @@ const data: Array<Card> = [{
 
 const apartments = document.querySelector('.apartments')!;
 const keyNum = document.querySelector(".key-num")!;
-//айди с прочей инфой загоняем в объект, используемый для хранения в массиве корзины
 //если да, то по айди удаляем из массива, снимаем стили. предельная емкость корзины -- 10 элементов.
 
 function loadCards(data: Array<Card>): void {
@@ -274,10 +273,13 @@ function loadCards(data: Array<Card>): void {
                 card.classList.remove("card-choice");
                 cart = cart.filter((elem) => (elem !== `${data[i].picture}`));
             } else {
-                keys.classList.add("chosen");
-                card.classList.add("card-choice");
-                cart.push(data[i].picture);
-            }
+                if (cart.length === 5) {
+                    alert('Your cart is full');
+                }  else {
+                    (cart.push(data[i].picture));
+                    keys.classList.add("chosen");
+                    card.classList.add("card-choice");
+            }}
             keyNum.innerHTML = cart.length.toString();
         });
 
