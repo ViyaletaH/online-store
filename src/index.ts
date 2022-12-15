@@ -248,6 +248,9 @@ const keyNum = document.querySelector(".key-num")!;
 //если да, то по айди удаляем из массива, снимаем стили. предельная емкость корзины -- 10 элементов.
 
 function loadCards(data: Array<Card>): void {
+    if (data.length === 0) {
+        apartments.innerHTML = 'No variants found';
+    } else {
     for (let i = 0 ; i < data.length; i++) {
         const card = document.createElement("div")!;
         card.classList.add("card");
@@ -310,8 +313,50 @@ function loadCards(data: Array<Card>): void {
         info.appendChild(pricelabel);
         pricelabel.innerHTML = data[i].price.toString() + '$';
     }
+        }
    
 };
+
+//отображение карточек
+const grid = document.getElementById('grid-view')!;
+const list = document.getElementById('list-view')!;
+
+// let card: HTMLElement;
+
+// async function f() {
+
+//     let promise = new Promise((resolve, reject) => {
+//       setTimeout(() => resolve(basicLoad()), 10)
+//     });
+//     let promiseAgain = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve((card = document.querySelector("card")!)), 11)
+//       });
+      
+//     let result = await promise;
+//     let secres = await promiseAgain; // будет ждать, пока промис не выполнится (*)
+  
+// }
+  
+//   f();
+
+grid.addEventListener("click", () => {
+    if(apartments.classList.contains("show-list")) {
+    apartments.classList.remove("show-list");
+    }
+    apartments.classList.add("show-grid");
+})
+
+list.addEventListener("click", () => {
+    if(apartments.classList.contains("show-grid")) {
+        apartments.classList.remove("show-grid");
+    }
+    // if (card) {
+    //     card.classList.add("list-style");
+    //     alert('works');
+    // }
+        apartments.classList.add("show-list");
+})
+
 
 //сортировки
 //запоминать сортировку по каждому варианту в константы (массивы), создать массив, в который будут залетать строки-флаги.

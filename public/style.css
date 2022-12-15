@@ -579,7 +579,7 @@ input[type="radio"]:checked {
 .subparams {
   display: flex;
   align-items: center;
-  width: 10rem;
+  width: 11em;
 }
 
 .view {
@@ -594,7 +594,7 @@ input[type="radio"]:checked {
   font-size: 0.75rem;
   color: #626262;
   display: flex;
-  width: 14ch;
+  width: 15ch;
 }
 
 .grid {
@@ -674,6 +674,19 @@ input[type="radio"]:checked {
   padding-top: 2%;
 }
 
+.show-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+}
+
+.show-list {
+  display: block;
+  padding-left: 1rem;
+  flex-direction: column;
+}
+
 .card {
   display: flex;
   position: relative;
@@ -683,6 +696,10 @@ input[type="radio"]:checked {
   flex-direction: column;
   border-radius: 15px;
   padding: 3px;
+}
+
+.list-style {
+  background-color: red;
 }
 
 .card:hover {
@@ -730,13 +747,16 @@ input[type="radio"]:checked {
   align-self: flex-start;
   align-items: center;
   justify-content: center;
-  border: solid 1px crimson;
   right: 5px;
   top: 3px;
   width: 15px;
   height: 15px;
   border-radius: 50%;
   font-size: 0.8rem;
+  color: white;
+  font-weight: 600;
+  background: radial-gradient(ellipse at top right, #fff800, transparent),
+            radial-gradient(#4dff5c, transparent);
 }
 
 .card-name {
