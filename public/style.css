@@ -936,3 +936,257 @@ input[type="radio"]:checked {
   visibility: hidden;
 }
 
+@media screen and (max-width: 1399px) and (min-width: 1348px) {
+
+  .filters {
+    margin-right: 5px;
+    float: left;
+    max-width: 18%;
+    min-width: 18%;
+  }
+
+  .variants {
+    margin-left: 5px;
+    float: right;
+    max-width: 78%;
+    min-width: 78%;
+  }
+
+  .subfilters {
+    display: flex;
+    height: 5%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .subparams {
+    display: flex;
+    align-items: center;
+    width: 11em;
+  }
+  
+  .number {
+    font-size: 0.75rem;
+    color: #626262;
+    display: flex;
+    width: 15ch;
+  }
+  
+  .view {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+  }
+
+
+}
+
+@media screen and (max-width: 1347px) and (min-width: 1138px) {
+
+  .filters {
+    margin-right: 5px;
+    float: left;
+    max-width: 18%;
+    min-width: 18%;
+  }
+
+  .variants {
+    margin-left: 5px;
+    float: right;
+    max-width: 74%;
+    min-width: 74%;
+  }
+
+  .search {
+    margin-bottom: 2%;
+  }
+  
+  .type {
+    margin-bottom: 2%;
+  }
+
+  .rent {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-top: 2%;
+  }
+
+  .buy {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-bottom: 2%;
+  }
+  .city {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .rooms {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .furniture {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .year {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .price {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .line {
+    max-width: 30%;
+  }
+
+}
+
+@media screen and (max-width: 1138px) and (min-width: 945px) {
+
+  .filters {
+    margin-right: 5px;
+    float: left;
+    max-width: 18%;
+    min-width: 18%;
+  }
+
+  .variants {
+    margin-left: 5px;
+    float: right;
+    max-width: 74%;
+    min-width: 74%;
+  }
+
+  .card-name, .price-label {
+    font-size: 0.8rem;
+  }
+
+  .searcherItself {
+    margin-bottom: 2%;
+    max-width: 100%;
+  }
+  
+  .type {
+    margin-bottom: 2%;
+  }
+
+  .rent {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-top: 2%;
+  }
+
+  .buy {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-bottom: 2%;
+  }
+  .city {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .rooms {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .furniture {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .year {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .price {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .line {
+    max-width: 30%;
+  }
+
+}
+
+@media screen and (max-width: 945px) and (min-width: 768px) {
+
+  .filters {
+    margin-right: 5px;
+    float: left;
+    max-width: 18%;
+    min-width: 18%;
+  }
+
+  .variants {
+    margin-left: 5px;
+    float: right;
+    max-width: 74%;
+    min-width: 74%;
+  }
+
+  .card-name, .price-label {
+    font-size: 0.8rem;
+  }
+
+  .searcherItself {
+    margin-bottom: 2%;
+    max-width: 100%;
+  }
+  
+  .type {
+    margin-bottom: 2%;
+  }
+
+  .rent {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-top: 2%;
+  }
+
+  .buy {
+    height: 50%;
+    font-size: 0.8rem;
+    margin-bottom: 2%;
+  }
+  .city {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .rooms {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .furniture {
+    margin-bottom: 2%;
+    font-size: 0.8rem;
+  }
+
+  .year {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .price {
+    margin-bottom: 3%;
+    font-size: 0.8rem;
+  }
+
+  .line {
+    max-width: 30%;
+  }
+
+}

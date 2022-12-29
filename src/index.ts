@@ -25,6 +25,7 @@ import * as noUiSlider from '/Users/37529/online-store/node_modules/nouislider/d
     const search: HTMLElement = document.querySelector('.search')!;
 
 //эффект на линии при enter'е (ГОТОВ)
+const searcherItself: HTMLInputElement = document.querySelector('.searcherItself')!;
 let checker: boolean = false;
 
 document.onkeydown = function keySearch(event: KeyboardEvent): void {
@@ -34,7 +35,9 @@ document.onkeydown = function keySearch(event: KeyboardEvent): void {
 
         if (searcherItself.value.length !== 0) {
             clear.classList.add('close');
-          }
+            generalFilter();
+            loadCards(data1);
+        }
     }
 
 };
@@ -49,7 +52,6 @@ document.onkeyup = function keySearch(): void {
 //удаление запроса из строки поиска (ГОТОВО)
 
 const clear: HTMLElement = document.querySelector(".clear-search")!;
-const searcherItself: HTMLInputElement = document.querySelector('.searcherItself')!;
 
 clear.addEventListener("click", () => {
     searcherItself.value = "";
@@ -553,6 +555,9 @@ function generalFilter(): void {
     if (checkCard.year !== 0) {
         data1 = data1.filter(filterYear);//отловить 
     }
+    if (searcherItself.value.length !== 0) {
+        data1 = data1.filter(filterSearch);
+    }
 
     function filterYear(item: Card) {
         if (item.year === checkCard.year) {
@@ -620,6 +625,13 @@ function generalFilter(): void {
         function filterSaigon(item: Card) {
             if (item.city === 'saigon') {
               return true;
+            }
+        }
+
+        function filterSearch(item: Card) {
+            if (item.name.match(searcherItself.value)) {
+                console.log(searcherItself.value);
+                return true;
             }
         }
         data1.length === 1 ? (totalNumber.innerHTML = data1.length + ' Variant found') : (totalNumber.innerHTML = data1.length + ' Variants found');
