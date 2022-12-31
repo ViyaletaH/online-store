@@ -638,3 +638,10 @@ function generalFilter(): void {
         console.log(checkCard.year);
 }
 generalFilter();
+
+// function responsiveStyles():void {
+//     if (window.innerWidth < 945) {
+
+//     }
+// }
+// responsiveStyles();
