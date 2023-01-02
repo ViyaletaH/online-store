@@ -639,9 +639,25 @@ function generalFilter(): void {
 }
 generalFilter();
 
-// function responsiveStyles():void {
-//     if (window.innerWidth < 945) {
+const hamburger: HTMLElement = document.querySelector('.hamburger')!;
+const filters: HTMLElement = document.querySelector('.filters')!;
+const line1: HTMLElement = document.querySelector('.line1')!;
+const line2: HTMLElement = document.querySelector('.line2')!;
+const line3: HTMLElement = document.querySelector('.line3')!;
+const dark: HTMLElement = document.querySelector('.darkened')!;
 
-//     }
-// }
-// responsiveStyles();
+function InOut():void {
+     filters.classList.toggle('open');
+     line1.classList.toggle('open1');
+     line2.classList.toggle('open2'); 
+     line3.classList.toggle('open3');
+     dark.classList.toggle('dark');
+  }
+
+  function listener(a:HTMLElement):void {
+    return a.addEventListener('click', () => {
+        InOut();
+     })
+  }
+  
+  listener(hamburger);
