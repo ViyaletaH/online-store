@@ -51,7 +51,7 @@ document.onkeyup = function keySearch(): void {
 
 //удаление запроса из строки поиска (ГОТОВО)
 
-const clear: HTMLElement = document.querySelector(".clear-search")!;
+const clear: HTMLElement = document.querySelector(".clearer")!;
 
 clear.addEventListener("click", () => {
     searcherItself.value = "";
@@ -352,10 +352,6 @@ list.addEventListener("click", () => {
     if(apartments.classList.contains("show-grid")) {
         apartments.classList.remove("show-grid");
     }
-    // if (card) {
-    //     card.classList.add("list-style");
-    //     alert('works');
-    // }
         apartments.classList.add("show-list");
 })
 

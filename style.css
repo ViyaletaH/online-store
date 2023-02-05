@@ -1510,6 +1510,7 @@ input[type="radio"]:checked {
     margin-bottom: 3%;
     padding: 0.5%;
     justify-self: right;
+    border:solid 1px crimson;
   }
 
   .card-name, .price-label {
